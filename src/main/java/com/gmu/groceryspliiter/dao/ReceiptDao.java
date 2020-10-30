@@ -1,6 +1,6 @@
-package com.example.demo.dao;
+package com.gmu.groceryspliiter.dao;
 
-import com.example.demo.model.Receipt;
+import com.gmu.groceryspliiter.model.Receipt;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,11 +1,11 @@
-package com.example.demo.dao;
+package com.gmu.groceryspliiter.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.example.demo.model.Receipt;
+import com.gmu.groceryspliiter.model.Receipt;
 
 import org.springframework.stereotype.Repository;
 

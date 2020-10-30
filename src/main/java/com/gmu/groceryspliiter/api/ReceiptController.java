@@ -1,4 +1,4 @@
-package com.example.demo.api;
+package com.gmu.groceryspliiter.api;
 
 import java.util.List;
 import java.util.UUID;
@@ -6,8 +6,8 @@ import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.example.demo.model.Receipt;
-import com.example.demo.service.ReceiptService;
+import com.gmu.groceryspliiter.model.Receipt;
+import com.gmu.groceryspliiter.service.ReceiptService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
