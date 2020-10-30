@@ -1,0 +1,37 @@
+div {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.navbar-custom {
+	background-color: #2f4151;
+}
+
+/*Color of brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+	color: lightgrey;
+}
+
+/* Color of links */
+.navbar-custom .navbar-nav .nav-link {
+    color: lightgrey;
+}
+
+/* Color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+	background-color: #425B71;
+    color: white;
+}
+
+.btn-Item {
+	color: lightgrey;
+	background-color: #2f4151;
+	border-color: #2f4151;
+}
+
+.btn-Item:hover {
+	background-color: #425B71;
+	color: white;
+}
