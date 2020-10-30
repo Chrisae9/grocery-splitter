@@ -1,4 +1,4 @@
-package com.gmu.groceryspliiter.model;
+package com.gmu.grocerysplitter.model;
 
 import java.util.UUID;
 

@@ -1,10 +1,10 @@
-package com.gmu.groceryspliiter.dao;
-
-import com.gmu.groceryspliiter.model.Receipt;
+package com.gmu.grocerysplitter.dao;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import com.gmu.grocerysplitter.model.Receipt;
 
 public interface ReceiptDao {
 

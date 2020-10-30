@@ -1,11 +1,11 @@
-package com.gmu.groceryspliiter.service;
+package com.gmu.grocerysplitter.service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.gmu.groceryspliiter.dao.ReceiptDao;
-import com.gmu.groceryspliiter.model.Receipt;
+import com.gmu.grocerysplitter.dao.ReceiptDao;
+import com.gmu.grocerysplitter.model.Receipt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

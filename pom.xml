@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gmu</groupId>
-	<artifactId>groceryspliiter</artifactId>
+	<artifactId>grocerysplitter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Grocery Splitter</name>
 	<description>Split a grocery bill between parties</description>
