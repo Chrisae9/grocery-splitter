@@ -22,27 +22,25 @@ jQuery(function($) {
 </head>
 
 <body>
-    
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-md navbar-custom py-0">
-        <a class="navbar-brand" href="#">GrocerySplitter</a>
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">SPLIT BILL</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">VIEW RECORDS</a>
-            </li>
-        </ul>
-    </nav>
+
+	<!--Navigation bar-->
+	<div id="default-navbar"></div>
+	<script>
+		$.get("navbar.html", function(data){
+    	$("#default-navbar").replaceWith(data);
+		});
+	</script>
+	<!--end of Navigation bar-->
 
     <div class="container-fluid">
         <h1 th:text="'Welcome, ' + ${name} + '!'" />
     </div>
+
+	<div>
+	<button type="button" id="import-receipt" class="btn btn-gs_basic">Import Receipt from Records</button>
+	<a href="/receiptManagement" type="button" id="create-receipt" class="btn btn-gs_basic">Create New Receipt</a>
+	</div>
+	
 
     <form>
         <div>
@@ -68,8 +66,8 @@ jQuery(function($) {
         </div>
 
         <div>
-            <button type="button" id="add-item" class="btn btn-Item">Add Item</button>
-            <button type="button" id="delete-item" class="btn btn-Item">Delete Item</button>
+            <button type="button" id="add-item" class="btn btn-gs_basic">Add Item</button>
+            <button type="button" id="delete-item" class="btn btn-gs_basic">Delete Item</button>
         </div>
         
     </form>
