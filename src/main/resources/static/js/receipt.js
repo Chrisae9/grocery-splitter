@@ -29,7 +29,9 @@ $(document).ready(function () {
   }).then(function (data) {
     $(".receipt-id").append(data[0].id);
     $(".receipt-name").append(data[0].name);
-    $(".receipt-list").append($("<li>").text(data[0].name));
+    data[0].items.forEach((element) => {
+      $(".receipt-items").append(element.name + " ");
+    });
   });
 });
 

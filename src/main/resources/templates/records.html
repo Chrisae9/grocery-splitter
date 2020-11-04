@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>Records</title>
@@ -7,30 +8,23 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
 
-	<!--Navigation bar-->
 	<div id="default-navbar"></div>
-	<script>
-		$.get("navbar.html", function(data){
-    	$("#default-navbar").replaceWith(data);
-		});
-	</script>
-	<!--end of Navigation bar-->
-	
+
 	<p><b>RECORDS PAGE</b></p>
 	<p>DISPLAY USER RECEIPTS AND USER BILLS</p>
-	
-	
+
+
 	<p id="test"></p>
 	<script>
 		var myObj, myJSON, text, obj;
 
 		// Storing data:
-		myObj = { storeName: "Walmart", date: "10/31/2020" ,totalCost: 45.35};
+		myObj = { storeName: "Walmart", date: "10/31/2020", totalCost: 45.35 };
 		myJSON = JSON.stringify(myObj);
 		localStorage.setItem("testJSON", myJSON);
 
@@ -38,8 +32,11 @@
 		text = localStorage.getItem("testJSON");
 		obj = JSON.parse(text);
 		document.getElementById("test").innerHTML = "Store: " + obj.storeName + " Date: " + obj.date +
-													" Cost: " + obj.totalCost;
-</script>
+			" Cost: " + obj.totalCost;
+	</script>
 
 </body>
+
 </html>
+
+<script type="text/javascript" src="js/navbar.js"></script>

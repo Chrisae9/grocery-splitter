@@ -1,41 +1,42 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-    <title>GrocerySplitter</title>
+	<title>GrocerySplitter</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
+
 <body>
-	<!--Navigation bar-->
+
 	<div id="default-navbar"></div>
-	<script>
-		$.get("navbar.html", function(data){
-    	$("#default-navbar").replaceWith(data);
-		});
-	</script>
-	<!--end of Navigation bar-->
+
 
 	<div class="container-fluid">
 		<h1>Welcome to GrocerySplitter</h1>
-        <form>
-            <div class="form-group col-sm-3">
-              <label for="examspleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" size="20" placeholder="Enter email">
-            </div>
-            <div class="form-group col-sm-3">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-gs_basic">Submit</button>
-          </form>
+		<!-- <form>
+			<div class="form-group col-sm-3">
+				<label for="examspleInputEmail1">Email address</label>
+				<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" size="20"
+					placeholder="Enter email">
+			</div>
+			<div class="form-group col-sm-3">
+				<label for="exampleInputPassword1">Password</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-gs_basic">Submit</button>
+		</form> -->
 		<p><a href="/login">Login</a> / <a href="/signup">Sign-up</a></p>
 		<p><a href="/billManagement">Bill Management</a></p>
 		<p><a href="/receiptManagement">Receipt Management</a></p>
 	</div>
-	
+
 </body>
+
 </html>
+
+<script type="text/javascript" src="js/navbar.js"></script>

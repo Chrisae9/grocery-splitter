@@ -1,33 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Bill Management</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<title>Bill Management</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
 
-	<!--Navigation bar-->
 	<div id="default-navbar"></div>
-	<script>
-		$.get("navbar.html", function(data){
-    	$("#default-navbar").replaceWith(data);
-		});
-	</script>
-	<!--end of Navigation bar-->
 
-    <div class="container-fluid">
-        <h1 th:text="'Welcome, ' + ${name} + '!'" />
-    </div>
+	<div class="container-fluid">
+		<h1 th:text="'Welcome, ' + ${name} + '!'" />
+	</div>
 
 	<div>
-	<button type="button" id="import-receipt" class="btn btn-gs_basic">Import Receipt</button>
-	<a href="/receiptManagement" type="button" id="create-receipt" class="btn btn-gs_basic">Create New Receipt</a>
+		<button type="button" id="import-receipt" class="btn btn-gs_basic">Import Receipt</button>
+		<a href="/receiptManagement" type="button" id="create-receipt" class="btn btn-gs_basic">Create New Receipt</a>
 	</div>
-    
+
 </body>
+
 </html>
+
+<script type="text/javascript" src="js/navbar.js"></script>
