@@ -46,8 +46,8 @@ $(document).ready(function() {
         event.stopPropagation();
     });
 
+    // Saves a receipt to the database when the submit button is pressed
     $("#save-receipt-button").on("click", function() {
-        alert($("#receipt-select").val());
         var receipt = {};
         receipt.name = $("#receipt-name").val();
         // Creating a receipt does not take an id
@@ -61,9 +61,6 @@ $(document).ready(function() {
         });
 
         receiptjson = JSON.stringify(receipt);
-
-        console.log(receiptjson);
-
 
         if ($("#receipt-select").val() != 0) {
             receipt.id = $("#receipt-select").val();
@@ -95,6 +92,7 @@ $(document).ready(function() {
                 }
             });
         }
+        location.reload();
     });
 
     // Generic function to add items to the receipt list
