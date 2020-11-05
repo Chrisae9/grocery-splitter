@@ -9,29 +9,49 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/receipt.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </head>
 
 <body>
-    <p class="receipt-id">The ID is </p>
-    <p class="receipt-name">The name is </p>
-    <p class="receipt-items">The items are </p>
+
 
     <div id="default-navbar"></div>
 
-    <div class="container-fluid">
-        <h1 th:text="'Welcome, ' + ${name} + '!'" />
-    </div>
 
-    <div id="item-container">
-        <h1> Receipt </h1>
-        <input type="text" placeholder="item">
+
+    <h2> Receipt Editor</h2>
+
+    <div class="container-fluid">
+        <select id="receipt-select" class="browser-default custom-select" style="width:300px;">
+            <option value=0 selected>Create a new receipt</option>
+        </select>
+
+        <input id="receipt-name" type="text" placeholder="Receipt Name" class="list-group-item">
+
+        <form id="item-form">
+            <input id="item-name" type="text" placeholder="Item" class="list-group-item">
+            <input id="item-cost" type="text" placeholder="Cost" class="list-group-item">
+        </form>
+        <button type="submit" form="item-form" value="submit" class="btn btn-secondary">Add Item</button>
+
         <div id="receipt-list">
-            <ul class="items">
-                <li><span> ~ </span>Apple</li>
-                <li><span> ~ </span>Toast</li>
-                <li><span> ~ </span>Milk</li>
-            </ul>
+            <ul class="items list-group"></ul>
+        </div>
+
+        <button id="save-receipt-button" type="button" class="btn btn-primary">Save</button>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Receipt Database</h5>
+                <h6 class="card-subtitle mb-2 text-muted">The first receipt will show if present</h6>
+                <p class="card-text receipt-id">The ID is </p>
+                <p class="card-text receipt-name">The name is </p>
+                <p class="card-text receipt-items">The items are </p>
+            </div>
         </div>
     </div>
 
