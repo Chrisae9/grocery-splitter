@@ -1,18 +1,5 @@
-// Tester function to display the first receipt from the database at the top of the page
 $(document).ready(function () {
-  $.ajax({
-    url: "http://localhost:8080/api/v1/receipt/",
-  }).then(function (data) {
-    $(".receipt-id").append(data[0].id);
-    $(".receipt-name").append(data[0].name);
-    data[0].items.forEach((element) => {
-      $(".receipt-items").append(element.name + " ");
-    });
-  });
-});
-
-// Adds all receipts to the select dropdown menu
-$(document).ready(function () {
+  // Select Dropdown Box - populates with receipts from database
   $.ajax({
     url: "http://localhost:8080/api/v1/receipt/",
     success: function (response) {
@@ -26,23 +13,63 @@ $(document).ready(function () {
       console.log(response);
     },
   });
-});
 
-$(document).ready(function () {
-  // Action of browser item submit form
+  // Select Dropdown Box (on change) - fills the page with selected receipt data
+  $("#receipt-select").on("change", function () {
+    $("#receipt-table tbody").empty();
+    $("#receipt-name").val("");
+
+    if ($("#receipt-select").val() != 0) {
+      $.ajax({
+        url: "http://localhost:8080/api/v1/receipt/" + $(this).val(),
+      }).then(function (data) {
+        $("#receipt-name").val(data.name);
+        data.items.forEach((element) => {
+          addItem(element.name, element.cost);
+        });
+      });
+    }
+  });
+
+  // Add Item Button - adds an item to the table when the button is pressed
   $("#item-form").submit(function (event) {
     // this cancels the default action of submitting a form
     event.preventDefault();
     var item = $("#item-name").val();
     var money = parseFloat($("#item-cost").val());
     addItem(item, money);
+    // reset the form
     $("#item-name").val("");
     $("#item-cost").val("");
+    $("#item-name").focus();
   });
 
-  // Deletes the items from the receipt list
-  $("#receipt-list ul").on("click", "span", function (event) {
+  // Add Item (generic) - function to add an item to the table
+  function addItem(item, cost) {
+    if (typeof cost !== "number" || isNaN(cost)) {
+      cost = 0.0;
+    }
+
+    $("#receipt-table tbody").append(
+      "<tr>" +
+        '<th scope="row"><i class="fas fa-receipt"></i></th>' +
+        '<td id="name">' +
+        item +
+        "</td>" +
+        '<td id="cost">' +
+        cost.toFixed(2) +
+        "</td>" +
+        "<td>" +
+        '<span><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></span>' +
+        "</td>" +
+        "</tr>"
+    );
+  }
+
+  // Item Delete Button (table) - removes an item from the table
+  $("#receipt-table").on("click", "span", function (event) {
     $(this)
+      .parent()
       .parent()
       .fadeOut(200, function () {
         $(this).remove();
@@ -50,13 +77,13 @@ $(document).ready(function () {
     event.stopPropagation();
   });
 
-  // Saves a receipt to the database when the submit button is pressed
+  // Save Button - saves a receipt to the database
   $("#save-receipt-button").on("click", function () {
     var receipt = {};
     receipt.name = $("#receipt-name").val();
-    // Creating a receipt does not take an id
+    // creating a receipt does not take an id
     receipt.items = [];
-    $("#receipt-list li").each(function () {
+    $("#receipt-table table > tbody  > tr").each(function () {
       var item = {
         name: $(this).find("#name").text(),
         cost: $(this).find("#cost").text(),
@@ -99,7 +126,7 @@ $(document).ready(function () {
     location.reload();
   });
 
-  // Deletes a receipt to the database when the delete button is pressed
+  // Delete Receipt Button - removes selected receipt from the database
   $("#delete-receipt-button").on("click", function () {
     if ($("#receipt-select").val() != 0) {
       $.ajax({
@@ -118,39 +145,17 @@ $(document).ready(function () {
     }
     location.reload();
   });
+});
 
-  // Generic function to add items to the receipt list
-  function addItem(item, cost) {
-    if (typeof cost !== "number" || isNaN(cost)) {
-      cost = 0.0;
-    }
-    $("#receipt-list ul").append(
-      '<li class="list-group-item"><span> <i class="fa fa-trash" aria-hidden="true"></i> </span>' +
-        '<span id="name">' +
-        item +
-        "</span>" +
-        " - $" +
-        '<span id="cost">' +
-        cost.toFixed(2) +
-        "</span>" +
-        "</li>"
-    );
-  }
-
-  // Populates list with selected receipt items
-  $("#receipt-select").on("change", function () {
-    $("#receipt-list ul").empty();
-    $("#receipt-name").val("");
-
-    if ($("#receipt-select").val() != 0) {
-      $.ajax({
-        url: "http://localhost:8080/api/v1/receipt/" + $(this).val(),
-      }).then(function (data) {
-        $("#receipt-name").val(data.name);
-        data.items.forEach((element) => {
-          addItem(element.name, element.cost);
-        });
-      });
-    }
+// Receipt Database Card - populates with first receipt for testing purposes
+$(document).ready(function () {
+  $.ajax({
+    url: "http://localhost:8080/api/v1/receipt/",
+  }).then(function (data) {
+    $(".receipt-id").append(data[0].id);
+    $(".receipt-name").append(data[0].name);
+    data[0].items.forEach((element) => {
+      $(".receipt-items").append(element.name + " ");
+    });
   });
 });
