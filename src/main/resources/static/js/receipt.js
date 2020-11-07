@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // Select Dropdown Box - populates with receipts from database
+
   $.ajax({
     url: "http://localhost:8080/api/v1/receipt/",
     success: function (response) {
@@ -18,6 +19,7 @@ $(document).ready(function () {
   $("#receipt-select").on("change", function () {
     $("#receipt-table tbody").empty();
     $("#receipt-name").val("");
+    $("#total-cost").text("0.00");
 
     if ($("#receipt-select").val() != 0) {
       $.ajax({
@@ -64,6 +66,8 @@ $(document).ready(function () {
         "</td>" +
         "</tr>"
     );
+    var newTotal = parseFloat($("#total-cost").text()) + cost;
+    $("#total-cost").text(newTotal.toFixed(2));
   }
 
   // Item Delete Button (table) - removes an item from the table
@@ -74,6 +78,17 @@ $(document).ready(function () {
       .fadeOut(200, function () {
         $(this).remove();
       });
+
+    var cost = parseFloat($(this).parent().parent().find("#cost").text());
+    if (typeof cost !== "number" || isNaN(cost)) {
+      cost = 0.0;
+    }
+    var newTotal = parseFloat($("#total-cost").text()) - cost;
+    if (newTotal < 0) {
+      newTotal = 0.0;
+    }
+    $("#total-cost").text(newTotal.toFixed(2));
+
     event.stopPropagation();
   });
 

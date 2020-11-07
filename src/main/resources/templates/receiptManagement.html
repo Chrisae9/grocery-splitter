@@ -18,12 +18,13 @@
 
 <body>
 
-
     <div id="default-navbar"></div>
 
     <div class="container-fluid">
 
-        <h2> Receipt Editor</h2>
+        <div class="d-flex">
+            <h2> Receipt Editor</h2>
+        </div>
 
         <div class="d-flex">
             <select id="receipt-select" class="browser-default custom-select" style="">
@@ -37,7 +38,6 @@
             <button id="delete-receipt-button" type="button"
                 class="btn btn-danger form-control btn-group-sm">Delete</button>
         </div>
-
 
         <div id="receipt-table" class="d-flex justify-content-center">
             <ul class="items list-group"></ul>
@@ -56,6 +56,10 @@
         </div>
 
         <div class="d-flex">
+            <h4>Total = $<span id="total-cost">0.00</span></h4>
+        </div>
+
+        <div class="d-flex p-2">
             <form id="item-form" class="" autocomplete="off">
                 <input id="item-name" type="text" placeholder="Item" class="form-control">
                 <input id="item-cost" type="text" placeholder="Cost" class="form-control">
@@ -77,9 +81,6 @@
                 </div>
             </form>
         </div>
-
-
-
 
         <div class="card" style="width: 18rem;">
             <div class="card-body">
