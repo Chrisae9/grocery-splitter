@@ -16,7 +16,7 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
 
     @Override
     public int insertReceipt(UUID id, Receipt receipt) {
-        DB.add(new Receipt(id, receipt.getName()));
+        DB.add(new Receipt(id, receipt.getName(), receipt.getItems()));
         return 1;
     }
 
@@ -45,7 +45,7 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
         return selectReceiptById(id).map(r -> {
             int indexOfPersonToUpdate = DB.indexOf(r);
             if (indexOfPersonToUpdate >= 0) {
-                DB.set(indexOfPersonToUpdate, new Receipt(id, receipt.getName()));
+                DB.set(indexOfPersonToUpdate, new Receipt(id, receipt.getName(), receipt.getItems()));
                 return 1;
             }
             return 0;

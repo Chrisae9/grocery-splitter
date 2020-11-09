@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bill Management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+<script>
+jQuery(function($) {
+  var $button = $('#add-item'),
+    $row = $('.row').clone();
+
+  $button.click(function() {
+    $row.clone().insertBefore($button);
+  });
+});
+</script>
+
+</head>
+
+<body>
+    
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-md navbar-custom py-0">
+        <a class="navbar-brand" href="#">GrocerySplitter</a>
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">SPLIT BILL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">VIEW RECORDS</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <h1 th:text="'Welcome, ' + ${name} + '!'" />
+    </div>
+
+    <form>
+        <div>
+            <label class="form-group col-sm-3">Item</label>
+            <label class="form-group col-sm-3">Cost</label>
+            <label class="form-group col-sm-3">Bill To</label>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <input type="text" class="form-control" placeholder="Item Name">
+            </div>
+            <div class="form-group col-sm-3">
+                <input type="text" class="form-control" placeholder="Cost">
+            </div>
+            <div class="form-group col-sm-3">
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Chris</option>
+                    <option>Mason</option>
+                    <option>Faduma</option>
+                    </select>
+            </div>
+        </div>
+
+        <div>
+            <button type="button" id="add-item" class="btn btn-Item">Add Item</button>
+            <button type="button" id="delete-item" class="btn btn-Item">Delete Item</button>
+        </div>
+        
+    </form>
+    
+</body>
+</html>

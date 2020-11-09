@@ -1,78 +1,100 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Receipt Management</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/receipt.css">
 
-<script>
-jQuery(function($) {
-  var $button = $('#add-item'),
-    $row = $('.row').clone();
-
-  $button.click(function() {
-    $row.clone().insertBefore($button);
-  });
-});
-</script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </head>
 
 <body>
-    
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-md navbar-custom py-0">
-        <a class="navbar-brand" href="#">GrocerySplitter</a>
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">SPLIT Receipt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">VIEW RECORDS</a>
-            </li>
-        </ul>
-    </nav>
+
+    <div id="default-navbar"></div>
 
     <div class="container-fluid">
-        <h1 th:text="'Welcome, ' + ${name} + '!'" />
+
+        <div class="d-flex">
+            <h2> Receipt Editor</h2>
+        </div>
+
+        <div class="d-flex">
+            <select id="receipt-select" class="browser-default custom-select" style="">
+                <option value=0 selected>Create a new receipt</option>
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-start p-2">
+            <input id="receipt-name" type="text" placeholder="Receipt name" class="form-control">
+            <button id="save-receipt-button" type="button" class="btn btn-secondary form-control">Save</button>
+            <button id="delete-receipt-button" type="button"
+                class="btn btn-danger form-control btn-group-sm">Delete</button>
+        </div>
+
+        <div id="receipt-table" class="d-flex justify-content-center">
+            <ul class="items list-group"></ul>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex">
+            <h4>Total = $<span id="total-cost">0.00</span></h4>
+        </div>
+
+        <div class="d-flex p-2">
+            <form id="item-form" class="" autocomplete="off">
+                <input id="item-name" type="text" placeholder="Item" class="form-control">
+                <input id="item-cost" type="text" placeholder="Cost" class="form-control">
+                <button type="submit" form="item-form" value="submit" class="btn btn-secondary align-self-start">Add
+                    Item</button>
+            </form>
+            <textarea disabled id="ocrbox" name="paragraph-text" cols="50" rows="10"
+                class="form-control">Scan a receipt to populate this area with text.</textarea>
+        </div>
+
+        <div class="container p-2">
+            <form method="post" action="" enctype="multipart/form-data" id="myform">
+                <div class="input-group mb-3">
+                    <button class="btn btn-secondary" type="button" id="upload-button">Scan</button>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="file">
+                        <label class="custom-file-label" for="file">Cropped receipt picture</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Receipt Database</h5>
+                <h6 class="card-subtitle mb-2 text-muted">The first receipt will show if present</h6>
+                <p class="card-text receipt-id">The ID is </p>
+                <p class="card-text receipt-name">The name is </p>
+                <p class="card-text receipt-items">The items are </p>
+            </div>
+        </div>
     </div>
-
-    <form>
-        <div>
-            <label class="form-group col-sm-3">Item</label>
-            <label class="form-group col-sm-3">Cost</label>
-            <label class="form-group col-sm-3">Receipt To</label>
-        </div>
-        
-        <div class="row">
-            <div class="form-group col-sm-3">
-                <input type="text" class="form-control" placeholder="Item Name">
-            </div>
-            <div class="form-group col-sm-3">
-                <input type="text" class="form-control" placeholder="Cost">
-            </div>
-            <div class="form-group col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Chris</option>
-                    <option>Mason</option>
-                    <option>Faduma</option>
-                    </select>
-            </div>
-        </div>
-
-        <div>
-            <button type="button" id="add-item" class="btn btn-Item">Add Item</button>
-            <button type="button" id="delete-item" class="btn btn-Item">Delete Item</button>
-        </div>
-        
-    </form>
-    
 </body>
+
 </html>
+
+<script type="text/javascript" src="js/receipt.js"></script>
+<script type="text/javascript" src="js/navbar.js"></script>

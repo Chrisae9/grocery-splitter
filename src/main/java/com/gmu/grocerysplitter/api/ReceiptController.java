@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.gmu.grocerysplitter.model.Item;
 import com.gmu.grocerysplitter.model.Receipt;
 import com.gmu.grocerysplitter.service.ReceiptService;
 
@@ -40,18 +41,23 @@ public class ReceiptController {
     }
 
     @GetMapping(path = "/{id}")
-    public Receipt getReceiptById(@PathVariable("id") UUID id){
-        //return 404 instead of null
+    public Receipt getReceiptById(@PathVariable("id") UUID id) {
+        // return 404 instead of null
         return receiptService.getReceiptById(id).orElse(null);
     }
 
+    @GetMapping(path = "/{id}/items")
+    public List<Item> getReceiptItems(@PathVariable("id") UUID id) {
+        return receiptService.getReceiptById(id).orElse(null).getItems();
+    }
+
     @DeleteMapping(path = "/{id}")
-    public void deleteReceiptById(@PathVariable("id") UUID id){
+    public void deleteReceiptById(@PathVariable("id") UUID id) {
         receiptService.deleteReceipt(id);
     }
 
     @PutMapping(path = "/{id}")
-    public void updateReceipt(@PathVariable("id") UUID id,@Valid @NotNull @RequestBody Receipt receipt){
+    public void updateReceipt(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Receipt receipt) {
         receiptService.updateReceipt(id, receipt);
     }
 
