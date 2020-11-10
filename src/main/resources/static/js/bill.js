@@ -57,19 +57,20 @@ $(document).ready(function () {
   }
 });
 
-//
-//$("#contributors").add-contributor(function (event) {
-//    event.preventDefault();
-//    var name = $("#bill-contributor").val();
-//    addContributor(name);
-//    
-//    $("bill-contributor").val("");
-//});
-//
-//  function addContributor(name) {
-//	    $("#contributors .names").append(
-//	    	'<p>' +	
-//	    	name +
-//	    	'</p'
-//	    );
-//	  }
+$("#add-contributor").on("click", function (event) {
+   event.preventDefault();
+   var name = $("#bill-contributor").val();
+   addContributor(name);
+   
+   $("bill-contributor").val("");
+});
+
+ function addContributor(name) {
+	    $("#contributors-list").append(
+        '<span class="ml-2 badge badge-pill badge-name">' +
+        name + 
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>' +
+      '</span>'
+        
+	    );
+	  }

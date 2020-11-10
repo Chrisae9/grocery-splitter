@@ -4,7 +4,7 @@ $(document).ready(function () {
     url: "http://localhost:8080/api/v1/receipt/",
     success: function (response) {
       response.forEach((element) => {
-        $("select").append(
+        $("#receipt-select").append(
           '<option value="' + element.id + '">' + element.name + "</option>"
         );
       });
