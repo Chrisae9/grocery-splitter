@@ -1,6 +1,5 @@
 $(document).ready(function () {
   // Select Dropdown Box - populates with receipts from database
-
   $.ajax({
     url: "http://localhost:8080/api/v1/receipt/",
     success: function (response) {

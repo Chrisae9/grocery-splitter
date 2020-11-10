@@ -12,16 +12,72 @@
 </head>
 
 <body>
-
+    <!--Navigation bar-->
 	<div id="default-navbar"></div>
 
-	<div class="container-fluid">
-		<h1 th:text="'Welcome, ' + ${name} + '!'" />
+	<div class="d-flex justify-content-start p-2">
+		<h1>Split Bill</h1>
 	</div>
+	
+	<div class="d-flex justify-content-start p-2">
+			<label for="receipt-select" class="col-sm-1 col-form-label">Receipt:</label>
+            <select id="receipt-select" class="browser-default custom-select">
+                <option value=0 selected>Select receipt</option>
+            </select>
+            
+            <label for="bill-name" class="col-sm-1 col-form-label">Name:</label>
+            <input id="bill-name" type="text" placeholder="Bill name" class="form-control">
+            
+            <label for="date" class="col-sm-1 col-form-label">Date:</label> 
+    		<input class="form-control" type="date" id="bill-date">
+    </div>
+    
+    <div id="contributors" class="d-flex justify-content-start p-2">
+    
+    	<label for="bill-contributors" class="col-sm-1 col-form-label">Contributors:</label>
+    	<input id="bill-contributor" type="text" placeholder="Name of Contributor" class="form-control col-sm-2">
+    	<button type="button" id="add-contributor" class="ml-2 btn btn-gs_basic">Add Contributor</button>    
+    
+    <div>
+   		<span class="ml-2 badge badge-pill badge-name">
+   			Mason
+   			<span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+   		</span>
+   		
+   		<span class="ml-2 badge badge-pill badge-name">
+   			Chris
+   			<span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+   		</span>
+   		
+   		<span class="ml-2 badge badge-pill badge-name">
+   			Faduma
+   			<span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+   		</span>
 
-	<div>
-		<button type="button" id="import-receipt" class="btn btn-gs_basic">Import Receipt</button>
-		<a href="/receiptManagement" type="button" id="create-receipt" class="btn btn-gs_basic">Create New Receipt</a>
+   	</div>
+    
+    </div>
+    
+
+      
+    <div id="receipt-table" class="d-flex justify-content-center p-2">
+    	<ul class="items list-group"></ul>
+        	<table class="table table-bordered">
+            	<thead>
+                	<tr>
+                        <th scope="col"></th>
+                        <th scope="col" style="text-align:center">Item</th>
+                        <th scope="col" style="text-align:center">Cost</th>
+                        <th scope="col" style="text-align:center">Contributors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+        	</table>
+	</div>
+        
+    <div class="d-flex justify-content-start p-2">
+            <h4>Total = $<span id="total-cost">0.00</span></h4>
 	</div>
 
 </body>
@@ -29,3 +85,4 @@
 </html>
 
 <script type="text/javascript" src="js/navbar.js"></script>
+<script type="text/javascript" src="js/bill.js"></script>

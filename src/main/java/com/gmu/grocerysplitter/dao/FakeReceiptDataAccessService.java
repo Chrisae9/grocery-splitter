@@ -9,7 +9,7 @@ import com.gmu.grocerysplitter.model.Receipt;
 
 import org.springframework.stereotype.Repository;
 
-@Repository("fakeDao")
+@Repository("receiptfakeDao")
 public class FakeReceiptDataAccessService implements ReceiptDao {
 
     private static List<Receipt> DB = new ArrayList<>();
