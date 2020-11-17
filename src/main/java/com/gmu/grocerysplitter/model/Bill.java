@@ -1,32 +1,39 @@
 package com.gmu.grocerysplitter.model;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import javax.validation.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Bill {
     private final UUID id;
     @NotBlank
     private final String billName;
-    private ArrayList<Item> list = new ArrayList<Item>(); //pull in list from receipt.java
+    private final Receipt receipt;
+    private final List<String> contributors;
 
-    public Bill(@JsonProperty("id") UUID id, @JsonProperty("billName") String billName) {
+    public Bill(@JsonProperty("id") UUID id, @JsonProperty("billName") String billName, 
+    		@JsonProperty("receipt") Receipt receipt, @JsonProperty("contributors") List<String> contributors) {
         this.id = id;
         this.billName = billName;
+        this.receipt = receipt;
+        this.contributors = contributors;
     }
 
     public UUID getId() {
         return this.id;
     }
 
-    public String getName() {
+    public String getBillName() {
         return this.billName;
     }
-  
-    //Adding item to list should be in receipt.java
-    public ArrayList<Item> addItem() {
-		return list;
-    }  	
+    
+    public Receipt getReceipt() {
+    	return this.receipt;
+    }
+    
+    public List<String> getContributors() {
+        return this.contributors;
+    }
+
 }

@@ -1,0 +1,18 @@
+{
+    "id": "c915383c-e894-4145-9796-43e9256f51d7",
+    "name": "Shoppers",
+    "items": [
+        {
+            "name": "Apple",
+            "cost": 0.99
+        },
+        {
+            "name": "Milk",
+            "cost": 5.14
+        },
+        {
+            "name": "Cereal",
+            "cost": 3.99
+        }
+    ]
+}
