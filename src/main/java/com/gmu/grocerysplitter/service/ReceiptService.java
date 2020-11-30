@@ -17,7 +17,7 @@ public class ReceiptService {
     private final ReceiptDao receiptDao;
 
     @Autowired
-    public ReceiptService(@Qualifier("receiptfakeDao") ReceiptDao receiptDao) {
+    public ReceiptService(@Qualifier("postgres") ReceiptDao receiptDao) {
         this.receiptDao = receiptDao;
     }
 
