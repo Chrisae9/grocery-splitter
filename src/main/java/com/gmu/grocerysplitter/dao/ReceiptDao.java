@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.gmu.grocerysplitter.model.Member;
 import com.gmu.grocerysplitter.model.Receipt;
 
 public interface ReceiptDao {
@@ -24,6 +23,7 @@ public interface ReceiptDao {
 
     int updateReceiptById(UUID id, Receipt receipt);
 
+<<<<<<< HEAD
 
     /***********************************************/
     int addNewMember(UUID id, Member member);
@@ -41,4 +41,6 @@ public interface ReceiptDao {
     List<Member> selectAllUsers();
 
     int updateMember(String userEmail, Member member);
+=======
+>>>>>>> d59fa8ea988fe345c226ea813411178441138650
 }

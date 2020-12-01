@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.gmu.grocerysplitter.model.Member;
 import com.gmu.grocerysplitter.model.Receipt;
 
 import org.springframework.stereotype.Repository;
@@ -52,6 +51,7 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
             return 0;
         }).orElse(0);
     }
+<<<<<<< HEAD
 
     @Override
     public int addNewMember(UUID id, Member member) {
@@ -82,4 +82,6 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
         // TODO Auto-generated method stub
         return 0;
     }
+=======
+>>>>>>> d59fa8ea988fe345c226ea813411178441138650
 }

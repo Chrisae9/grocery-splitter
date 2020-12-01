@@ -7,14 +7,13 @@ import java.util.UUID;
 
 import com.gmu.grocerysplitter.model.Receipt;
 import com.gmu.grocerysplitter.model.Item;
-import com.gmu.grocerysplitter.model.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
-@Repository("postgres")
+@Repository("receiptDao")
 public class ReceiptDataAccessService implements ReceiptDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -93,6 +92,7 @@ public class ReceiptDataAccessService implements ReceiptDao {
         // final String sql = "UPDATE Receipt SET name = ? WHERE id = ?";
         // return jdbcTemplate.update(sql, receipt.getName(), id.toString());
     }
+<<<<<<< HEAD
 
     /*****************************************************************/
     @Override
@@ -145,5 +145,7 @@ public class ReceiptDataAccessService implements ReceiptDao {
            return 0;
         
     }
+=======
+>>>>>>> d59fa8ea988fe345c226ea813411178441138650
     
 }

@@ -9,13 +9,16 @@ import com.gmu.grocerysplitter.model.Member;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 
+<<<<<<< HEAD
 @Repository("postgres")
 public class MembersDataAccessService implements MemberDoa {
+=======
+@Repository("memberDao")
+public class MembersDataAccessService implements MemberDao {
+>>>>>>> d59fa8ea988fe345c226ea813411178441138650
 
     public static List<Member> membersDB = new ArrayList<>();
     private final JdbcTemplate jdbcTemplate;
@@ -28,12 +31,10 @@ public class MembersDataAccessService implements MemberDoa {
     @Override
     public int addNewMember(UUID id, Member member) {
         UUID randomUUID = UUID.randomUUID();
-        final String sql = "INSERT INTO Member (userEmail, userPassword, firstName, lastName) VALUES (?, ?, ?, ?);";
+        final String sql = "INSERT INTO Member (id, userEmail, userPassword, firstName, lastName) VALUES (?, ?, ?, ?, ?);";
        
         int insert = jdbcTemplate.update(sql, randomUUID.toString(), member.getUserEmail(),
                                          member.getUserPassword(), member.getFirstname(), member.getLastname());
-        // membersDB.add(new Member(id, member.getFirstname(), member.getLastname(), member.getUserEmail(),
-        //         member.getReciepts(), member.getBills()));
         return insert;
     }
 
@@ -88,6 +89,5 @@ public class MembersDataAccessService implements MemberDoa {
         // TODO Auto-generated method stub
         return null;
     }
-
-    
 }
+
