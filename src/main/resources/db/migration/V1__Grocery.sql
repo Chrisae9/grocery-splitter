@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS Member (
     userEmail VARCHAR(100) NOT NULL, 
     password VARCHAR(100) NOT NULL,
     firstName VARCHAR(100) NOT NULL,
-    lastName VARCHAR(100) NOT NULL, 
+    lastName VARCHAR(100) NOT NULL
 );
