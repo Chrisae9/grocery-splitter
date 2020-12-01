@@ -1,16 +1,15 @@
 package com.gmu.grocerysplitter.service;
 
-import com.gmu.grocerysplitter.model.Member;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import com.gmu.grocerysplitter.dao.ReceiptDao;
+import com.gmu.grocerysplitter.model.Member;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 @Service
 public class MemberService {
@@ -33,13 +32,13 @@ public class MemberService {
         return memberDao.selectAllUsers();
     }
     
-    public Optional<Member> getMemberById(UUID id)
+    public Optional<Member> getMemberByEmail(String userEmail)
     {
-        return memberDao.selectMemberById(id);
+        return memberDao.selectMemberByEmail(userEmail);
     }
-    public int updateMember(UUID id, Member member)
-    {
-        return memberDao.updateMember(id, member);
+
+	public int updateMember(String userEmail, Member memberToUpdate) {
+       return memberDao.updateMember(userEmail, memberToUpdate);
     }
 
 }

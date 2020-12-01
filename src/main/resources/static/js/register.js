@@ -14,23 +14,27 @@ $(document).ready(function () {
       // alert("VALUES ENTERED: " + user.userEmail + " " + user.password + " " + user.firstName + " " + user.lastName);
         
         //Create a user account
+        // userjson = JSON.stringify(user);
         userjson = JSON.stringify(user);
+        // alert("userjson: " + userjson);
 
         //Place the user account into DB
         $.ajax({
           type: "POST",
-          url:"http://localhost:8080/api/v1/member",
-          contentTye:"application/json",
-          dataType: "json",
+          url: "http://localhost:8080/api/v1/member/",
+          contentType:"application/json",
           data: userjson,
           success: function (response) {
             console.log(response);
+            // alert("SUCESS!");
           },
           error: function (response) {
             console.log(response);
+            // alert("FAILURE!");
           },
-        })
-        location.reload();
+        });
+        window.location.replace("/memberHomePage");
+        // window.open("/memberHomePage");
       });
 
 });

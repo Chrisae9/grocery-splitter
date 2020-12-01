@@ -40,15 +40,15 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
-    @GetMapping(path = "/{id}")
-    public Member getMemberById(@PathVariable("id") UUID id)
+    @GetMapping(path = "/{userEmail}")
+    public Member getMemberByEmail(@PathVariable("userEmail") String userEmail)
     {
-        return memberService.getMemberById(id).orElse(null);
+        return memberService.getMemberByEmail(userEmail).orElse(null);
     }
 
-    @PutMapping(path = "/{id}")
-    public void updateMember(@PathVariable("id") UUID id, @RequestBody Member memberToUpdate)
+    @PutMapping(path = "/{userEmail}")
+    public void updateMember(@PathVariable("userEmail") String userEmail, @RequestBody Member memberToUpdate)
     {
-        memberService.updateMember(id, memberToUpdate);
+        memberService.updateMember(userEmail, memberToUpdate);
     }
 }

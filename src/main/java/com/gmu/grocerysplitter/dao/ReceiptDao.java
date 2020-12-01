@@ -34,11 +34,11 @@ public interface ReceiptDao {
         return addNewMember(id, member);
     }
 
-    Optional<Member> selectMemberById(UUID id);
+    Optional<Member> selectMemberByEmail(String userEmail);
     
     boolean isValidMember(String email);
 
     List<Member> selectAllUsers();
 
-    int updateMember(UUID id, Member member);
+    int updateMember(String userEmail, Member member);
 }

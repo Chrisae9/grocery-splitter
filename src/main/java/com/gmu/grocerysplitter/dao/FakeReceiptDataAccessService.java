@@ -60,12 +60,6 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
     }
 
     @Override
-    public Optional<Member> selectMemberById(UUID id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public boolean isValidMember(String email) {
         // TODO Auto-generated method stub
         return false;
@@ -78,7 +72,13 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
     }
 
     @Override
-    public int updateMember(UUID id, Member member) {
+    public Optional<Member> selectMemberByEmail(String userEmail) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int updateMember(String userEmail, Member member) {
         // TODO Auto-generated method stub
         return 0;
     }

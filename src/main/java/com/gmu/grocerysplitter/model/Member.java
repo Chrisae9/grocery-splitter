@@ -35,13 +35,14 @@ public class Member {
         this.bills = bills;
     }
     
+    
     public UUID getID () {return this.id;}
 
     public String getFirstname() {return this.fName;}
     public String getLastname() {return this.lName;}
     public String getUserEmail() {return this.userEmail;}
     public String getUserPassword() {return this.userPassword;}
-    public List<Receipt> getReciepts() {return this.receipts;}
+    public List<Receipt> getReciepts () {return this.receipts;}
     public List<Bill> getBills() {return this.bills;}
     
     

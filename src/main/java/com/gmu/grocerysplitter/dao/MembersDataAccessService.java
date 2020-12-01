@@ -14,7 +14,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 
-@Repository("fakedoa")
+@Repository("fakedao")
 public class MembersDataAccessService implements MemberDoa {
 
     public static List<Member> membersDB = new ArrayList<>();

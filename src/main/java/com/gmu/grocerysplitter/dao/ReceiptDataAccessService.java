@@ -109,9 +109,12 @@ public class ReceiptDataAccessService implements ReceiptDao {
 
 
     @Override
-    public Optional<Member> selectMemberById(UUID id) {
-        // TODO Auto-generated method stub
-        return null;
+    public Optional<Member> selectMemberByEmail(String userEmail) {
+        final String sql = "SELECT * FROM Member WHERE userEmail = ?";
+        Member selectedMember = jdbcTemplate.queryForObject(sql,new Object[] { userEmail }, (rs, rowNum) -> new Member(UUID.fromString(rs.getString("id")),
+        rs.getString("userEmail"),rs.getString("userPassword"), rs.getString("firstName"), rs.getString("lastName"), null, null));
+
+        return Optional.ofNullable(selectedMember);
     }
 
      // email will be used as username
@@ -130,14 +133,17 @@ public class ReceiptDataAccessService implements ReceiptDao {
 
     @Override
     public List<Member> selectAllUsers() {
-        // TODO Auto-generated method stub
-        return null;
+        final String sql = "SELECT * FROM Member";
+
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Member(UUID.fromString(rs.getString("id")),
+                rs.getString("userEmail"),rs.getString("userPassword"), rs.getString("firstName"), rs.getString("lastName"), null, null));
     }
 
     @Override
-    public int updateMember(UUID id, Member member) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int updateMember(String userEmail, Member member) {
+    
+           return 0;
+        
     }
     
 }
