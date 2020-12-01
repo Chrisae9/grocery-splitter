@@ -10,15 +10,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.gmu.grocerysplitter.dao.ReceiptDao;
+import com.gmu.grocerysplitter.dao.MemberDao;
 
 @Service
 public class MemberService {
 
-    private final ReceiptDao memberDao;
+    private final MemberDao memberDao;
 
     @Autowired
-    public MemberService(@Qualifier("postgres") ReceiptDao memberDao)
+    public MemberService(@Qualifier("memberDao") MemberDao memberDao)
     {
         this.memberDao = memberDao;
     }

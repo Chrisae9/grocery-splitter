@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import com.gmu.grocerysplitter.model.Member;
 
-public interface MemberDoa {
+public interface MemberDao {
     
     int addNewMember(UUID id, Member member);
 
