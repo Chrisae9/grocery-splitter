@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import com.gmu.grocerysplitter.model.Receipt;
 import com.gmu.grocerysplitter.model.Item;
+import com.gmu.grocerysplitter.model.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -92,4 +93,51 @@ public class ReceiptDataAccessService implements ReceiptDao {
         // final String sql = "UPDATE Receipt SET name = ? WHERE id = ?";
         // return jdbcTemplate.update(sql, receipt.getName(), id.toString());
     }
+
+    /*****************************************************************/
+    @Override
+    public int addNewMember(UUID id, Member member) {
+        UUID randomUUID = UUID.randomUUID();
+        final String sql = "INSERT INTO Member (id, userEmail, userPassword, firstName, lastName) VALUES (?, ?, ?, ?, ?);";
+       
+        int insert = jdbcTemplate.update(sql, randomUUID.toString(), member.getUserEmail(),
+                                         member.getUserPassword(), member.getFirstname(), member.getLastname());
+        // membersDB.add(new Member(id, member.getFirstname(), member.getLastname(), member.getUserEmail(),
+        //         member.getReciepts(), member.getBills()));
+        return insert;
+    }
+
+
+    @Override
+    public Optional<Member> selectMemberById(UUID id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+     // email will be used as username
+     public boolean isValidMember(String email) {
+
+        final String sql = "SELECT count(*) FROM Member WHERE userEmail = ?";
+        int count = jdbcTemplate.queryForObject(sql, new Object [] {email}, Integer.class);
+    
+        if(count > 0 )
+            return true;
+
+        return false;
+        // boolean valid = false;
+
+    }
+
+    @Override
+    public List<Member> selectAllUsers() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int updateMember(UUID id, Member member) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    
 }

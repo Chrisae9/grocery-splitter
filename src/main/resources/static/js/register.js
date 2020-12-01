@@ -1,18 +1,36 @@
 $(document).ready(function () {
 
     //Login Button Pressed
-    $("#login-button").click(function (event) {
+    $("#register-button").click(function (event) {
         // this cancels the default action of submitting a form
         event.preventDefault();
 
+        var user = {};
         // collect information from the input fields 
-        var userEmail = $("#inputEmail").val();
-        var password = $("#inputPassword").val();
-        var firstName = $("#inputFirstName").val();
-        var lastName = $("#inputLastName").val();
+        user.userEmail = $("#inputEmail").val();
+        user.userPassword = $("#inputPassword").val();
+        user.fName = $("#inputFirstName").val();
+        user.lName = $("#inputLastName").val();
+      // alert("VALUES ENTERED: " + user.userEmail + " " + user.password + " " + user.firstName + " " + user.lastName);
         
         //Create a user account
-        
+        userjson = JSON.stringify(user);
+
+        //Place the user account into DB
+        $.ajax({
+          type: "POST",
+          url:"http://localhost:8080/api/v1/member",
+          contentTye:"application/json",
+          dataType: "json",
+          data: userjson,
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (response) {
+            console.log(response);
+          },
+        })
+        location.reload();
       });
 
 });

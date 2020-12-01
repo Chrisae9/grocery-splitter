@@ -11,11 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class PostgresDatasource {
     
     @Bean
-    @ConfigurationProperties("app.datasource")
+    @ConfigurationProperties(prefix ="app.datasource")
     public HikariDataSource hikariDataSource() {
         return DataSourceBuilder
         .create()
         .type(HikariDataSource.class)
         .build();
     }
+
 }
