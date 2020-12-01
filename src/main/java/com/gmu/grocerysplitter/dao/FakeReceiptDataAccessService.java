@@ -51,37 +51,4 @@ public class FakeReceiptDataAccessService implements ReceiptDao {
             return 0;
         }).orElse(0);
     }
-<<<<<<< HEAD
-
-    @Override
-    public int addNewMember(UUID id, Member member) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public boolean isValidMember(String email) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public List<Member> selectAllUsers() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Optional<Member> selectMemberByEmail(String userEmail) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int updateMember(String userEmail, Member member) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-=======
->>>>>>> d59fa8ea988fe345c226ea813411178441138650
 }

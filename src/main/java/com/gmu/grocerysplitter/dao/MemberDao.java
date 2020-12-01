@@ -22,6 +22,6 @@ public interface MemberDao {
 
     List<Member> selectAllUsers();
 
-    int updateMember(UUID id, Member member);
+    int updateMember(String userEmail, Member memberToUpdate);
     
 }

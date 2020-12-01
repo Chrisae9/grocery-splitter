@@ -23,24 +23,4 @@ public interface ReceiptDao {
 
     int updateReceiptById(UUID id, Receipt receipt);
 
-<<<<<<< HEAD
-
-    /***********************************************/
-    int addNewMember(UUID id, Member member);
-
-    default int addNewMember (Member member)
-    {
-        UUID id = UUID.randomUUID();
-        return addNewMember(id, member);
-    }
-
-    Optional<Member> selectMemberByEmail(String userEmail);
-    
-    boolean isValidMember(String email);
-
-    List<Member> selectAllUsers();
-
-    int updateMember(String userEmail, Member member);
-=======
->>>>>>> d59fa8ea988fe345c226ea813411178441138650
 }

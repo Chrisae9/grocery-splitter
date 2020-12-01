@@ -4,16 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-<<<<<<< HEAD
-import com.gmu.grocerysplitter.dao.ReceiptDao;
+import com.gmu.grocerysplitter.dao.MemberDao;
 import com.gmu.grocerysplitter.model.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-=======
-import com.gmu.grocerysplitter.dao.MemberDao;
->>>>>>> d59fa8ea988fe345c226ea813411178441138650
 
 @Service
 public class MemberService {

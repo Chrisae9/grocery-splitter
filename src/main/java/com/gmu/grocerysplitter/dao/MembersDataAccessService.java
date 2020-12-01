@@ -12,13 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-<<<<<<< HEAD
-@Repository("postgres")
-public class MembersDataAccessService implements MemberDoa {
-=======
 @Repository("memberDao")
 public class MembersDataAccessService implements MemberDao {
->>>>>>> d59fa8ea988fe345c226ea813411178441138650
 
     public static List<Member> membersDB = new ArrayList<>();
     private final JdbcTemplate jdbcTemplate;
@@ -38,8 +33,18 @@ public class MembersDataAccessService implements MemberDao {
         return insert;
     }
 
-    // email will be used as username
-    public boolean isValidMember(String email) {
+
+    @Override
+    public Optional<Member> selectMemberByEmail(String userEmail) {
+        final String sql = "SELECT * FROM Member WHERE userEmail = ?";
+        Member selectedMember = jdbcTemplate.queryForObject(sql,new Object[] { userEmail }, (rs, rowNum) -> new Member(UUID.fromString(rs.getString("id")),
+        rs.getString("userEmail"),rs.getString("userPassword"), rs.getString("firstName"), rs.getString("lastName"), null, null));
+
+        return Optional.ofNullable(selectedMember);
+    }
+
+     // email will be used as username
+     public boolean isValidMember(String email) {
 
         final String sql = "SELECT count(*) FROM Member WHERE userEmail = ?";
         int count = jdbcTemplate.queryForObject(sql, new Object [] {email}, Integer.class);
@@ -52,42 +57,70 @@ public class MembersDataAccessService implements MemberDao {
 
     }
 
-    public Member getMember(String email) {
-
-        if (isValidMember(email)) {
-            Member m = null;
-            for (int i = 0; i < membersDB.size(); i++) {
-                m = membersDB.get(i);
-                if (m.getUserEmail().equalsIgnoreCase(email)) {
-                    return m;
-                }
-            }
-        }
-        return null;
-    }
-
     @Override
     public List<Member> selectAllUsers() {
-        // TODO Auto-generated method stub
-        return membersDB;
+        final String sql = "SELECT * FROM Member";
+
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Member(UUID.fromString(rs.getString("id")),
+                rs.getString("userEmail"),rs.getString("userPassword"), rs.getString("firstName"), rs.getString("lastName"), null, null));
     }
 
     @Override
-    public Optional<Member> selectMemberById(UUID id) {
-        return membersDB.stream()
-                .filter(member -> member.getID().equals(id))
-                .findFirst();
+    public int updateMember(String userEmail, Member member) {
+    
+           return 0;
+        
     }
+    // // email will be used as username
+    // public boolean isValidMember(String email) {
 
-    @Override
-    public int updateMember(UUID id, Member memberUpdate) {
-        return 0;
-    }
+    //     final String sql = "SELECT count(*) FROM Member WHERE userEmail = ?";
+    //     int count = jdbcTemplate.queryForObject(sql, new Object [] {email}, Integer.class);
+    
+    //     if(count > 0 )
+    //         return true;
 
-    @Override
-    public Optional<Member> selectMemberByEmail(String email) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    //     return false;
+    //     // boolean valid = false;
+
+    // }
+
+    // public Member getMember(String email) {
+
+    //     if (isValidMember(email)) {
+    //         Member m = null;
+    //         for (int i = 0; i < membersDB.size(); i++) {
+    //             m = membersDB.get(i);
+    //             if (m.getUserEmail().equalsIgnoreCase(email)) {
+    //                 return m;
+    //             }
+    //         }
+    //     }
+    //     return null;
+    // }
+
+    // @Override
+    // public List<Member> selectAllUsers() {
+    //     // TODO Auto-generated method stub
+    //     return membersDB;
+    // }
+
+    // @Override
+    // public Optional<Member> selectMemberById(UUID id) {
+    //     return membersDB.stream()
+    //             .filter(member -> member.getID().equals(id))
+    //             .findFirst();
+    // }
+
+    // @Override
+    // public int updateMember(UUID id, Member memberUpdate) {
+    //     return 0;
+    // }
+
+    // @Override
+    // public Optional<Member> selectMemberByEmail(String email) {
+    //     // TODO Auto-generated method stub
+    //     return null;
+    // }
 }
 
