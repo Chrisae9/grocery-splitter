@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 
     <body>
@@ -13,15 +15,52 @@
          <!--Navigation bar-->
          <div id="default-navbar"></div>
 
-    <div class="container-fluid">
-        <h1 th:text="'Welcome, ' + ${name} + '!'" />
-    </div>
+         <div class="limiter">
+         <div class="container-login100">
+           <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+             <form class="login100-form validate-form">
+               <span class="login100-form-title p-b-33">
+                 Create Account
+               </span>
+     
+               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                 <span class="focus-input100-1"></span>
+                 <span class="focus-input100-2"></span>
+               </div>
+     
+               <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                 <span class="focus-input100-1"></span>
+                 <span class="focus-input100-2"></span>
+               </div>
 
-    <div class="container-fluid">
-        <h2> Sign Up:</h2> 
-    </div>
-    
-        <!--COLLECT USER INFORMATION-->
+               <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                <input type="First Name" class="form-control" id="inputFirstName" placeholder="First Name">
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+              </div>
+
+              <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                <input type="Last Name" class="form-control" id="inputLastName" placeholder="Last Name">
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+              </div>
+     
+               <div class="container-login100-form-btn m-t-20">
+                 <button class="login100-form-btn" id = "register-button" value="Register">
+                   Sign Up
+                 </button>
+               </div>
+
+                 </a>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+<!-- 
+        COLLECT USER INFORMATION
         <form>
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -44,9 +83,9 @@
               </div>
             </div>
             <input type = "button" id = "register-button" class="btn btn-gs_basic" name = "" value="Register">
-            <!-- <a href="/memberHomePage" type="button" id="create-receipt" class="btn btn-gs_basic">Sign Up</a> -->
+            <a href="/memberHomePage" type="button" id="create-receipt" class="btn btn-gs_basic">Sign Up</a> 
           </form>
-    </body>
+    </body> -->
 
 </head>
 </html>
