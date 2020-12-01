@@ -14,7 +14,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 
-@Repository("fakedao")
+@Repository("postgres")
 public class MembersDataAccessService implements MemberDoa {
 
     public static List<Member> membersDB = new ArrayList<>();
@@ -80,18 +80,13 @@ public class MembersDataAccessService implements MemberDoa {
 
     @Override
     public int updateMember(UUID id, Member memberUpdate) {
-        return selectMemberById(id).map(
-            member-> {
-                int indexOfMemberToUpdate = membersDB.indexOf(member);
-                if(indexOfMemberToUpdate >= 0){
-                    membersDB.set(indexOfMemberToUpdate, new Member (id, memberUpdate.getUserEmail(), memberUpdate.getUserPassword(),
-                                                memberUpdate.getFirstname(), memberUpdate.getLastname(), 
-                                                memberUpdate.getReciepts(), memberUpdate.getBills()));
-                    return 1;
-                }
-                return 0;
-             
-                }).orElse(0);
+        return 0;
+    }
+
+    @Override
+    public Optional<Member> selectMemberByEmail(String email) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     

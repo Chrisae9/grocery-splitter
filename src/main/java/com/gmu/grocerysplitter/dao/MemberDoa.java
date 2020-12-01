@@ -16,7 +16,7 @@ public interface MemberDoa {
         return addNewMember(id, member);
     }
 
-    Optional<Member> selectMemberById(UUID id);
+    Optional<Member> selectMemberByEmail(String email);
     
     boolean isValidMember(String email);
 
