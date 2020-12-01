@@ -8,8 +8,11 @@ $(document).ready(function () {
         // collect information from the input fields 
         var userEmail = $("#inputEmail").val();
         var password = $("#inputPassword").val();
-      
-        //VERIFY THE userEmail and password
+        var firstName = $("#inputFirstName").val();
+        var lastName = $("#inputLastName").val();
+        
+        //Create a user account
+        
       });
 
 });
