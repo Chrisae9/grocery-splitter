@@ -22,7 +22,7 @@ public class MembersDataAccessService implements MembersDoa {
     //email will be used as username
     public boolean isValidMember(String email){
         
-        boolean valid = false;
+        //boolean valid = false;
         for(Member m : membersDB)
         {
             if (m.getUserEmail().equalsIgnoreCase(email))

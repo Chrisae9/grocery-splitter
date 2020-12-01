@@ -1,7 +1,5 @@
 package com.gmu.grocerysplitter.dao;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import com.gmu.grocerysplitter.model.Member;
