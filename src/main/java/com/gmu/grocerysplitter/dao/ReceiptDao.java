@@ -22,4 +22,5 @@ public interface ReceiptDao {
     int deleteReceiptById(UUID id);
 
     int updateReceiptById(UUID id, Receipt receipt);
+
 }

@@ -6,24 +6,41 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
     <!--Navigation bar-->
-	<div id="default-navbar"></div>
-
+    <!-- <div id="default-navbar"></div> -->
     
-    <div class="container-fluid">
-        <h1 th:text="'Welcome, ' + ${name} + '!'" />
-    </div>
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+					<span class="login100-form-title p-b-33">
+						<h1 id = "welcome-message"></h1> 
+					</span>
 
-    <div class="container-fluid">
-        <h2> Member Page is Live</h2> 
-    </div>
-    
+					<div class="container-login100-form-btn m-t-20">
+						<a class="login100-form-btn" href="/receiptManagement">CREATE RECEIPT</a>
+                    </div>
+                    <div class="container-login100-form-btn m-t-20">
+						<a class="login100-form-btn" href="/billManagement">SPLIT BILL</a>
+                    </div>
+                    <div class="container-login100-form-btn m-t-20">
+						<a class="login100-form-btn" href="/records">VIEW RECORDS</a>
+                    </div>
+                    <div class="container-login100-form-btn m-t-20">
+						<a class="login100-form-btn" href="/index.html">Logout</a>
+					</div>
+
+
+			</div>
+		</div>
+	</div>
+      
     
 </body>
 </html>
-
+<script type="text/javascript" src="js/memberhomepage.js"></script>
 <script type="text/javascript" src="js/navbar.js"></script>

@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
-@Repository("postgres")
+@Repository("receiptDao")
 public class ReceiptDataAccessService implements ReceiptDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -92,4 +92,5 @@ public class ReceiptDataAccessService implements ReceiptDao {
         // final String sql = "UPDATE Receipt SET name = ? WHERE id = ?";
         // return jdbcTemplate.update(sql, receipt.getName(), id.toString());
     }
+    
 }
