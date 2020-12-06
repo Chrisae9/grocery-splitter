@@ -7,8 +7,13 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    
 </head>
 
 <body>
@@ -18,6 +23,14 @@
 	<div class="d-flex justify-content-start p-2">
 		<h1>Split Bill</h1>
 	</div>
+
+	<div class="d-flex justify-content-start p-2">
+		<button type="button" class="ml-2 btn btn-gs_basic" data-toggle="modal" data-target="#contributorModal">Add Contributors</button>
+		<div class="d-flex justify-content-start p-2">
+			<div id="contributors-list"><b>Contributors: </b></div>
+		</div>
+	
+	</div>
 	
 	<div class="d-flex justify-content-start p-2">
 			<label for="receipt-select" class="col-sm-1 col-form-label">Receipt:</label>
@@ -25,40 +38,60 @@
                 <option value=0 selected>Select receipt</option>
             </select>
             
-            <label for="bill-name" class="col-sm-1 col-form-label">Name:</label>
-            <input id="bill-name" type="text" placeholder="Bill name" class="form-control">
+            <label for="bill-name" class="col-sm-1 col-form-label">Bill Name:</label>
+            <input type="text" placeholder="Bill name" class="form-control" id="bill-name">
             
-            <label for="date" class="col-sm-1 col-form-label">Date:</label> 
+            <label for="date" class="col-sm-1 col-form-label">Bill Date:</label> 
     		<input class="form-control" type="date" id="bill-date">
     </div>
-    
-    <div id="contributors" class="d-flex justify-content-start p-2">
-    
-    	<label for="bill-contributors" class="col-sm-1 col-form-label">Contributors:</label>
-    	<input id="bill-contributor" type="text" placeholder="Name of Contributor" class="form-control col-sm-2">
-    	<button type="button" id="add-contributor" class="ml-2 btn btn-gs_basic">Add Contributor</button>    
-    
-    <div id="contributors-list">
-   		<span class="ml-2 badge badge-pill badge-name">
-   			Mason
-   			<span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-   		</span>
-   		
-   		<span class="ml-2 badge badge-pill badge-name">
-   			Chris
-   			<span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-   		</span>
-   		
-   		<span class="ml-2 badge badge-pill badge-name">
-   			Faduma
-   			<span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-   		</span>
+ 
+  <div class="container">
 
-   	</div>
-    
+  <!-- The Modal -->
+  <div class="modal" id="contributorModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Contributors</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+    		<div id="contributors-tags" class="d-flex justify-content-start p-2">
+    			<input id="bill-contributor" type="text" placeholder="Name of Contributor" class="form-control col-sm-5">
+    			<button type="submit" class="ml-2 btn btn-gs_basic" id="add-contributor">Add Contributor</button>    
+			</div>
+			
+			<div id="contributors-table" class="d-flex justify-content-center p-2">
+    			<ul class="items list-group"></ul>
+        		<table class="table table-bordered">
+	            	<thead>
+	                	<tr>
+	                        <th scope="col" style="text-align:center">Name</th>
+	                        <th scope="col" style="text-align:center">Action</th>
+	                    </tr>
+	                </thead>
+                	
+                	<tbody>
+                	</tbody>
+                </table>
+           	</div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        	<button type="button" class="ml-2 btn btn-gs_basic" id="save-contributors" data-dismiss="modal">Save &amp; Close</button>        	        	
+        </div>
+        
+      </div>
     </div>
-    
-
+  </div>
+  
+</div>
       
     <div id="receipt-table" class="d-flex justify-content-center p-2">
     	<ul class="items list-group"></ul>
@@ -77,8 +110,35 @@
 	</div>
         
     <div class="d-flex justify-content-start p-2">
-            <h4>Total = $<span id="total-cost">0.00</span></h4>
+    	<h4>Total = $<span id="total-cost">0.00</span></h4>
+        <button id="calculate-bill" type="button" class="ml-2 btn btn-gs_basic" data-toggle="modal" data-target="#billModal">Calculate Bill</button>
 	</div>
+	
+	  <!-- The Modal -->
+  <div class="modal" id="billModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Calculated Bill</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="bill">			
+			
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        	<button type="button" class="ml-2 btn btn-gs_basic" id="save-bill" data-dismiss="modal">Save &amp; Close</button>        	        	
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 </body>
 
