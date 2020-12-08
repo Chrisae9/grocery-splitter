@@ -229,4 +229,28 @@ $(document).ready(function () {
 	  	   );  	  
 	   }
 	});
+  
+  $("#save-bill").on("click", function () {
+	  var bill = {};
+	  
+	  billjson = JSON.stringify(bill);
+	  
+      $.ajax({
+          type: "PUT",
+          url: "http://localhost:8080/api/v1/bill/",
+          contentType: "application/json",
+          dataType: "json",
+          data: billjson,
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (response) {
+            console.log(response);
+          },
+        });
+      alert("Bill Saved")
+      window.location.replace("/billManagement");
+  
+  });
+  
 });
