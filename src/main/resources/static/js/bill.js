@@ -140,19 +140,22 @@ $(document).ready(function () {
 	   
 	   function getTableData(){
 		   var itemContributors  =[];
-		   var contribBillID;
+		   var contribBillId;
+		   var contribBillTotal;
 		   
 		   //initialize a table for each contributor
 		   for(var i = 0; i < contributors.length; i++)
 			   {
-			   		contribBillID = contributors[i] + "-billTable";
-			   		alert("Table Created For: " + contributors[i] + "ID: " + contribBillID);
+			   		contribBillId = contributors[i] + "-billTable";
+			   		contribBillTotal = contributors[i] + "-billTotal";
+			   		contribBillBodyId = contributors[i] + "-tableBody";
+			   		//alert("Table Created For: " + contributors[i] + "ID: " + contribBillID);
 			   		
 			   		document.getElementById("bill").innerHTML +=
 			   			'<h5>' + contributors[i] +'</h5>' +
 			   			'<div class="d-flex justify-content-center p-2">' +
 			   				'<ul class="items list-group"></ul>' +
-			   					'<table id=' + contribBillID + ' class="table table-bordered">' +
+			   					'<table id=' + contribBillId + ' class="table table-bordered">' +
 			   						'<thead>' +
 			   							'<tr>' +       
 					                        '<th scope="col" style="text-align:center">Item</th>' +
@@ -162,11 +165,15 @@ $(document).ready(function () {
 					                '<tbody>' +
 					                '</tbody>' +
 					            '</table>' +
-					    '</div>'
+					    '</div>' 
+					document.getElementById("bill").innerHTML +=					            
+					    '<div class="d-flex justify-content-start p-2">' +
+					    	'<h5>Total = $<span id=' + contribBillTotal +'>0.00</span></h5>' +
+			    		'</div>' +
+			    		'<hr>'
 				}
 		   
 		   $("#receipt-table tbody tr").each(function(){
-			   var id;
 			      var item = {
 			    	        name: $(this).find("#name").text(),
 			    	        cost: $(this).find("#cost").text(),
@@ -177,21 +184,22 @@ $(document).ready(function () {
 			    	  {			    	  
 			    	  checkboxName = item.name + "-" + contributors[i];
 			    	  var checkbox = document.getElementById(checkboxName).checked;
-			    	  if(checkbox)
+			    	  
+			    	  if(checkbox) //validate checkbox
 			    		  {
 			    		  //alert("Contributor: '" + contributors[i] + "' added to contributor list for item: '" + item.name + "'");
 			    		  itemContributors.push(contributors[i]);
 			    		  }
 			    	  }
-			      //alert("Item: " + item.name + ", Cost: " + item.cost + ", # of Contributors: " + itemContributors.length)
+			      
 			      item.cost = item.cost / itemContributors.length;
-			      //alert("NEW COST -> Item: " + item.name + ", Cost: " + item.cost)
 			      
 			      //add item and cost to contributor table
 			      for(var i = 0; i < itemContributors.length; i++)
 			    	  {
-			    	  	id = itemContributors[i] + "-billTable";
-			    	  	document.getElementById(id).innerHTML += 
+			    	  	contribBillId = itemContributors[i] + "-billTable";
+			    	  	contribBillTotal = "#" + itemContributors[i] + "-billTotal";
+			    	  	document.getElementById(contribBillId).innerHTML += 
 			    	  		'<tr>' +
 			    	  			'<td id="name">' +
 			    	  			item.name +
@@ -199,7 +207,10 @@ $(document).ready(function () {
 			    	  			'<td id="cost">$' +
 			    	  			item.cost.toFixed(2) +
 			    	  			'</td>' +
-			    	  		'</tr>'	    	  			
+			    	  		'</tr>'	 
+			    	  			
+			    	    var newBillTotal = parseFloat($(contribBillTotal).text()) + item.cost;
+			    	    $(contribBillTotal).text(newBillTotal.toFixed(2));
 			    	  }
 			      
 			   itemContributors = []; //reset item contributors
@@ -208,12 +219,12 @@ $(document).ready(function () {
 	   
 	   function addBillNameDate(billName, billDate){
 	  	   $("#bill").append(
-	  	  		'<h4>Bill Name: ' +
+	  	  		'<h5>Bill Name: ' +
 	  	  		billName +
-	  	  		'</h4>'  +
-	  	  		'<h4>Date: ' +
+	  	  		'</h5>'  +
+	  	  		'<h5>Date: ' +
 	  	  		billDate +
-	  	  		'</h4>' +
+	  	  		'</h5>' +
 	  	  		'<hr>'
 	  	   );  	  
 	   }
